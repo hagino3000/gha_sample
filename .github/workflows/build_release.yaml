@@ -15,11 +15,15 @@ jobs:
       - name: Build
         run: |
             mkdir dist
-            echo ${{ github.sha }} > dist/Release.txt
-            echo fuga > dist/aaa.txt
+            echo ${{ github.sha }} > dist/release.txt
+            echo fuga > dist/fuga.txt
+            echo hoge > dist/hoge.txt
+            echo foo > dist/foo.txt
       - name: Test
         run: cat dist/Release.txt
+      - name: Compress
+        run: tar -zcf build-assets.tar.gz
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
-          files: dist/*
+          files: build-assets.tar.gz
