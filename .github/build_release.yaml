@@ -1,0 +1,22 @@
+name: build-upload-prd
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Build
+        run: |
+            mkdir dist
+            echo ${{ github.sha }} > dist/Release.txt
+            echo fuga > dist/aaa.txt
+      - name: Test
+        run: cat dist/Release.txt
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*
