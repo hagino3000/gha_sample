@@ -24,6 +24,6 @@ jobs:
       - name: Compress
         run: tar -zcf build-assets.tar.gz ./dist
       - name: Release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@810bfa2cd5f7c2bd4138fa75005d437ba562db81
         with:
           files: build-assets.tar.gz
