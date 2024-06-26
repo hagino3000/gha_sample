@@ -20,7 +20,7 @@ jobs:
             echo hoge > dist/hoge.txt
             echo foo > dist/foo.txt
       - name: Test
-        run: cat dist/Release.txt
+        run: cat dist/release.txt
       - name: Compress
         run: tar -zcf build-assets.tar.gz
       - name: Release
